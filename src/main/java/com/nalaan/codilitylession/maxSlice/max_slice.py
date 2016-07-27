@@ -14,3 +14,4 @@ def solution(A):
         if max_local_slice > max_slice:
             max_slice = max_local_slice
     return max_slice
+

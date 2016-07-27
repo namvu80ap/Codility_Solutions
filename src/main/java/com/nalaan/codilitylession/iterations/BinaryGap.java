@@ -1,10 +1,13 @@
 package com.nalaan.codilitylession.iterations;// you can also use imports, for example:
 // import java.util.*;
 
-// you can write to stdout for debugging purposes, e.g.
-// System.out.println("this is a debug message");
+/*
+The solution is use bitwise to shift 1 bit to right or left.
+Compare with 0 or 1 with & operator, count up the 0, compare with the max count, or reset count to 0
+ */
 
 public class BinaryGap {
+
     public int solution(int N) {
         // write your code in Java SE 8
         int gap = 0;
@@ -28,4 +31,49 @@ public class BinaryGap {
         }
         return max_gap;
     }
+
+    public static int getGap(int N) {
+        int max = 0;
+        int count = -1;
+        int r = 0;
+
+        while (N > 0) {
+            // get right most bit & shift right
+            r = N & 1;
+            N = N >> 1;
+
+            if (0 == r && count >= 0) {
+                count++;
+            }
+
+            if (1 == r) {
+                max = count > max ? count : max;
+                count = 0;
+            }
+        }
+
+        return max;
+    }
+
+    public static int getGap2(int N) {
+        int pre = -1;
+        int len = 0;
+
+        while (N > 0) {
+            int k = N & -N;
+
+            int curr = (int) Math.log(k);
+
+            N = N & (N - 1);
+
+            if (pre != -1 && Math.abs(curr - pre) > len) {
+                len = Math.abs(curr - pre) + 1;
+            }
+            pre = curr;
+        }
+
+        return len;
+    }
+
+
 }
