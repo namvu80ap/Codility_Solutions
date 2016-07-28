@@ -7,8 +7,20 @@ package com.nalaan.codilitylession.timeComplexity;
 
 //100 percent correctness score
 
+import java.util.Arrays;
+import java.util.OptionalInt;
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
+
 public class MissingPerm {
-    public int solution(int[] A) {
+
+    public static void main( String... arg ){
+        System.out.println( solution2(new int[]{ } ));
+    }
+
+    public static int solution(int[] A) {
         // write your code in Java SE 8
         int complete_sum = 0;
         int sum = 0;
@@ -20,4 +32,11 @@ public class MissingPerm {
         }
         return complete_sum - sum;
     }
+
+    public static int solution2(int[] A){
+        Set<Integer> setElement = Arrays.stream(A).boxed().collect(Collectors.toSet());
+        OptionalInt s = IntStream.range(1,A.length+1).filter( i -> !setElement.contains(i) ).findAny();
+        return s.orElse(A.length+1);
+    }
+
 }
