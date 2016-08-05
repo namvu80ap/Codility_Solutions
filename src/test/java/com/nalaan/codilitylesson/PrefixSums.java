@@ -2,9 +2,12 @@ package com.nalaan.codilitylesson;
 
 import com.nalaan.codilitylession.prefixSums.CountDiv;
 import com.nalaan.codilitylession.prefixSums.GenomicRangeQuery;
+import com.nalaan.codilitylession.prefixSums.MinAvgTwoSlice;
 import com.nalaan.codilitylession.prefixSums.PassingCars;
 import org.junit.Assert;
 import org.junit.Test;
+
+import java.util.List;
 
 /**
  * Created by nam.vu on 2016/07/29.
@@ -32,4 +35,14 @@ public class PrefixSums {
         int[] result = new int[]{2,4,1};
         Assert.assertArrayEquals(result, GenomicRangeQuery.solution( "CAGCCTA" , P, Q ));
     }
+
+    @Test
+    public void minAvgTwoSlice(){
+        int[] A = new int[]{4,2,2,5,1,5,8};
+        int[] B = new int[]{1,2};
+        Assert.assertEquals( 1, MinAvgTwoSlice.solution(A));
+        Assert.assertEquals( 1, MinAvgTwoSlice.solution(B));
+    }
+
+
 }
