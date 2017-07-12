@@ -7,9 +7,11 @@ package com.nalaan.codilitylession.countingElements;
 
 
 import java.util.*;
+import java.util.stream.IntStream;
 
 //100 percent correct
 public class MissingInt {
+
     public static int solution(int[] A) {
         // write your code in Java SE 8
         int N = A.length;
@@ -31,7 +33,7 @@ public class MissingInt {
         return min_positive;
     }
 
-    public static int solution3(int[] A){
+    public static int solution2(int[] A){
         boolean[] lookUpArray =  new boolean[A.length];
 
         for (int i = 0; i < A.length; i++)
@@ -43,6 +45,14 @@ public class MissingInt {
                 return i + 1;
 
         return A.length + 1;
+
     }
+
+    public static int solution3(int[] A){
+        Arrays.sort(A);
+        int d = IntStream.range( 0, A.length ).filter( item -> A[item] != item ).findFirst().getAsInt();
+        return d;
+    }
+
 
 }
